@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Samples</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<h1> Code Samples </h1>
+<h2>Example 8.1 Retry</h2>
+<div id="1"></div>
+<h2>Example 8.2 The Locked Box</h2>
+<div id="2"></div>
+<script>
+    class MultiplicatorUnitFailure extends Error {}
+    
+    function primitiveMultiply(a, b) {
+      if (Math.random() < 0.2) {
+        return a * b;
+      } else {
+        throw new MultiplicatorUnitFailure("Klunk");
+      }
+    }
+    
+    function reliableMultiply(a, b) {
+      for (;;) {
+        try {
+          return primitiveMultiply(a, b);
+        } catch (e) {
+          if (!(e instanceof MultiplicatorUnitFailure))
+            throw e;
+        }
+      }
+    }
+    
+    document.getElementById("1").innerHTML =reliableMultiply(8, 8);
+    // → 64
+</script>
+<script>
+const box = {
+  locked: true,
+  unlock() { this.locked = false; },
+  lock() { this.locked = true;  },
+  _content: [],
+  get content() {
+    if (this.locked) throw new Error("Locked!");
+    return this._content;
+  }
+};
+
+function withBoxUnlocked(body) {
+  let locked = box.locked;
+  if (!locked) {
+    return body();
+  }
+
+  box.unlock();
+  try {
+    return body();
+  } finally {
+    box.lock();
+  }
+}
+
+withBoxUnlocked(function() {
+  box.content.push("gold piece");
+});
+
+try {
+  withBoxUnlocked(function() {
+    throw new Error("Pirates on the horizon! Abort!");
+  });
+} catch (e) {
+  console.log("Error raised:", e);
+}
+// → true
+document.getElementById("2").innerHTML = box.locked;
+</script>
+</body>
+</html>
