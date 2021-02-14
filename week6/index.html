@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 portfolio</title>
+    <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
+	<script>
+    function createTodoItem() {
+      var todoItem = prompt("Enter Task name", "<name goes here>");
+      var itemString = '<div id="todoItem"><label class="container"><input type="checkbox" id="checkbox" class="check" style="transform: scale(2)";><span class="checkmark"></span></label><span id="taskName">' + todoItem + '</span><span id="removeItem" <button type="button" onclick="return this.parentNode.remove();" class="remove">X</button></span></div> <br>';
+      document.getElementById("todoList").innerHTML += itemString;
+      document.getElementById("numberOfTasks").innerHTML = document.getElementById("todoList").children.length/2;
+
+}
+    function isChecked() {
+    var check = document.querySelectorAll('.check')
+    for(var i=0; i < check.length; i++){
+      if (check[i].checked == false) 
+         check[i].parentNode.parentNode.style.display = "none";
+      else
+         check[i].parentNode.parentNode.style.display = "block";
+    }
+}
+    function isntChecked() {
+      var check = document.querySelectorAll('.check')
+    for(var i=0; i < check.length; i++){
+      if (check[i].checked == true) 
+         check[i].parentNode.parentNode.style.display = "none";
+      else
+         check[i].parentNode.parentNode.style.display = "block";
+    }
+}
+  </script>
+  </head>
+  <body>
+    <h1>WDD 330 Portfolio</h1>
+    <h2>Week 06</h2>
+	<ol id= "ol" style="text-align: left;">
+  <li><a href="../week5/notes.html">Notes</a style=></li>
+  <li><a href="../week5/code.html">Code Examples</a></li>
+	</ol>
+  <h1>TODO's</h1>
+<div id="todoBox">
+  <div id="todoList">
+  </div>
+<hr>
+<div id="menu">
+  <span>Tasks Left </span><span id="numberOfTasks"  onclick="afunction()"></span>
+  <span id="menuItem2" onclick="isChecked()"> Completed </span>
+  <span id="menuItem3" onclick="isntChecked()">Incomplete</span>
+</div> <br> <hr>
+<div>Add Task <img id="plus" src="https://cdn3.iconfinder.com/data/icons/ui-thick-outline-1-of-5/100/ui_01_of_9-02-512.png" alt ="plus" onclick="createTodoItem()"></div>
+</div>
+</body>
+</html>
