@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Samples</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<h1> Notes </h1>
+<ul>
+<li>"client-side validation should not be considered an exhaustive security measure! Your apps should always perform security checks on any form-submitted data on the server-side as well as the client-side, because client-side validation is too easy to bypass, so malicious users can still easily send bad data through to your server."</li><br>
+<li>"Validation done in the browser is called client-side validation, while validation done on the server is called server-side validation. In this chapter we are focusing on client-side validation."</li><br>
+<li>"We want to get the right data, in the right format. Our applications won't work properly if our users' data is stored in the wrong format, is incorrect, or is omitted altogether.
+    We want to protect our users' data. Forcing our users to enter secure passwords makes it easier to protect their account information.
+    We want to protect ourselves. There are many ways that malicious users can misuse unprotected forms to damage the application (see Website security)."</li><br>
+<li>"Never trust data passed to your server from the client. Even if your form is validating correctly and preventing malformed input on the client-side, a malicious user can still alter the network request."</li><br>
+<li>"The Fetch API provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses. It also provides a global fetch() method that provides an easy, logical way to fetch resources asynchronously across the network."</li><br>
+<li>"A fetch() promise will reject with a TypeError when a network error is encountered or CORS is misconfigured on the server-side, although this usually means permission issues or similar — a 404 does not constitute a network error, for example. An accurate check for a successful fetch() would include checking that the promise resolved, then checking that the Response.ok property has a value of true."</li><br>
+<li>"Since headers can be sent in requests and received in responses, and have various limitations about what information can and should be mutable, headers' objects have a guard property."</li><br>
+<li>"Another useful validation feature is the pattern attribute, which expects a Regular Expression as its value. A regular expression (regex) is a pattern that can be used to match character combinations in text strings, so regexps are ideal for form validation and serve a variety of other uses in JavaScript."</li><br>
+</ul>
+</body>
+</html>
